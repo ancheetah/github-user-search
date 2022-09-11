@@ -3,8 +3,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "@fontsource/space-mono"
 import { Container, 
   Row, 
-  Column, 
+  Col, 
   Card,
+  CardGroup,
   Button,
   Navbar,
   Form,
@@ -50,12 +51,31 @@ const IndexPage = () => {
     <Container>
       <Card>
         <Card.Body>
+
           <Card.Title>The Octocat</Card.Title>
           <a href="#">@octocat</a>
           <Card.Subtitle className="mb-2 text-muted">Joined 25 Jan 2011</Card.Subtitle>
           <Card.Text>
           Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros.
           </Card.Text>
+
+          <Container>
+            <Row>
+              <Col xs={4}>
+                  <Card.Title>Repos</Card.Title>
+                  <Card.Text>8</Card.Text>
+              </Col>
+              <Col xs={4}>
+                  <Card.Title>Followers</Card.Title>
+                  <Card.Text>8</Card.Text>
+              </Col>
+              <Col xs={4}>
+                  <Card.Title>Following</Card.Title>
+                  <Card.Text>8</Card.Text>
+              </Col>
+            </Row>
+          </Container>
+
           <ul>
             <li><Card.Link href="#">San Francisco</Card.Link></li>
             <li><Card.Link href="#">www.example.com</Card.Link></li>
