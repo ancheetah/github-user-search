@@ -21,6 +21,7 @@ module.exports = {
     options: {
 
       // token: required by the GitHub API
+      // scopes: https://docs.github.com/en/graphql/guides/forming-calls-with-graphql
       token: process.env.GITHUB_TOKEN,
 
       // GraphQLquery: defaults to a search query
@@ -30,7 +31,7 @@ module.exports = {
             name
             login
             createdAt
-            bioHTML
+            bio
             repositories {
               totalCount
             }
