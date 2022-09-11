@@ -26,8 +26,25 @@ module.exports = {
       // GraphQLquery: defaults to a search query
       graphQLQuery: `
         query {
-          repository(owner:"torvalds",name:"linux"){
-            description
+          user(login:"octocat") {
+            name
+            login
+            createdAt
+            bioHTML
+            repositories {
+              totalCount
+            }
+            followers {
+              totalCount
+            }
+            following {
+              totalCount
+            }
+            location
+            websiteUrl
+            twitterUsername
+            company
+            avatarUrl
           }
         }
         `,

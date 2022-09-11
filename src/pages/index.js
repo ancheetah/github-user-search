@@ -5,20 +5,26 @@ import { Container,
   Row, 
   Col, 
   Card,
-  CardGroup,
   Button,
   Navbar,
   Form,
   InputGroup,
  } 
  from "react-bootstrap"
+import { graphql } from "gatsby";
+// import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const pageStyles = {
   backgroundColor: "#F6F8FF",
   fontFamily: "Space Mono, monospace",
 }
 
-const IndexPage = () => {
+const IndexPage = ({data}) => {
+  const userData = data.githubData.data.user;
+  console.log("data = ", data, userData);
+
+  // const avatar = getImage(data.avatarUrl);
+
   return (
     <main style={pageStyles}>
 
@@ -52,35 +58,43 @@ const IndexPage = () => {
       <Card>
         <Card.Body>
 
-          <Card.Title>The Octocat</Card.Title>
-          <a href="#">@octocat</a>
-          <Card.Subtitle className="mb-2 text-muted">Joined 25 Jan 2011</Card.Subtitle>
-          <Card.Text>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros.
-          </Card.Text>
-
           <Container>
+            <Row>
+              <Col xs="auto">
+                {/* <GatsbyImage image={avatar} alt={data.avatarUrl}/> */}
+                <img src={userData.avatarUrl} width="70" height="70"/>
+              </Col>
+              <Col>
+                <Card.Title>{userData.name}</Card.Title>
+                <a href="/">{userData.login}</a>
+                <Card.Subtitle className="mb-2 text-muted">{`Joined ${userData.createdAt}`}</Card.Subtitle>
+                <Card.Text>{userData.bioHTML}</Card.Text>
+              </Col>
+            </Row>
+          </Container>
+
+          <Container className="bg-light">
             <Row>
               <Col xs={4}>
                   <Card.Title>Repos</Card.Title>
-                  <Card.Text>8</Card.Text>
+                  <Card.Text>{userData.repositories.totalCount}</Card.Text>
               </Col>
               <Col xs={4}>
                   <Card.Title>Followers</Card.Title>
-                  <Card.Text>8</Card.Text>
+                  <Card.Text>{userData.followers.totalCount}</Card.Text>
               </Col>
               <Col xs={4}>
                   <Card.Title>Following</Card.Title>
-                  <Card.Text>8</Card.Text>
+                  <Card.Text>{userData.following.totalCount}</Card.Text>
               </Col>
             </Row>
           </Container>
 
           <ul>
-            <li><Card.Link href="#">San Francisco</Card.Link></li>
-            <li><Card.Link href="#">www.example.com</Card.Link></li>
+            <li><Card.Link href="#">{userData.location}</Card.Link></li>
+            <li><Card.Link href="#">{userData.websiteUrl}</Card.Link></li>
             <li><Card.Link href="#">Twitter</Card.Link></li>
-            <li><Card.Link href="#">@github</Card.Link></li>
+            <li><Card.Link href="#">{userData.company}</Card.Link></li>
           </ul>
       
         </Card.Body>
@@ -93,4 +107,30 @@ const IndexPage = () => {
 
 export default IndexPage
 
-export const Head = () => <title>Home Page</title>
+export const userQuery = graphql`
+query {
+  githubData {
+    data {
+      user {
+        name
+        login
+        createdAt
+        bioHTML
+        repositories {
+          totalCount
+        }
+        followers {
+          totalCount
+        }
+        following {
+          totalCount
+        }
+        location
+        websiteUrl
+        company
+        avatarUrl
+      }
+    }
+  }
+}
+`
