@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
+    pathPrefix: '/github-user-search',
     title: `Github User Search`,
-    siteUrl: `https://www.yourdomain.tld`
   },
   plugins: ["gatsby-plugin-emotion", "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", {
     resolve: 'gatsby-source-filesystem',
