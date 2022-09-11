@@ -5,14 +5,12 @@ import { Container,
   Row, 
   Col, 
   Card,
-  Button,
   Navbar,
-  Form,
-  InputGroup,
  } 
  from "react-bootstrap"
 import { graphql } from "gatsby";
 // import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import SearchBar from "../components/SearchBar";
 
 const pageStyles = {
   backgroundColor: "#F6F8FF",
@@ -43,15 +41,7 @@ const IndexPage = ({data}) => {
     </header>
       
     <Container>
-      <Form>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <InputGroup>
-          <InputGroup.Text>O</InputGroup.Text>
-          <Form.Control type="text" placeholder="Search Github username..." />
-          <Button>Search</Button>
-        </InputGroup>
-      </Form.Group>
-      </Form>
+      <SearchBar/>
     </Container>
 
     <Container>
@@ -115,7 +105,7 @@ query {
         name
         login
         createdAt
-        bioHTML
+        bio
         repositories {
           totalCount
         }
