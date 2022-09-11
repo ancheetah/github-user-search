@@ -16,6 +16,7 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@fontsource/space-mono": "^4.5.10",
     "bootstrap": "^5.2.1",
     "gatsby": "^4.22.1",
     "gatsby-plugin-emotion": "^7.22.0",
@@ -26,6 +27,7 @@
     "gh-pages": "^4.0.0",
     "react": "^18.1.0",
     "react-bootstrap": "^2.5.0",
-    "react-dom": "^18.1.0"
+    "react-dom": "^18.1.0",
+    "typeface-space-mono": "^1.1.13"
   }
 }
