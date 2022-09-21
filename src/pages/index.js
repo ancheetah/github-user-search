@@ -1,7 +1,8 @@
-import * as React from "react"
+import { React, useEffect, useState } from "react"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "@fontsource/space-mono"
-import { Container, 
+import { 
+  Container, 
   Row, 
   Col, 
   Card,
@@ -9,7 +10,6 @@ import { Container,
  } 
  from "react-bootstrap"
 import { graphql } from "gatsby";
-// import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import SearchBar from "../components/SearchBar";
 
 const pageStyles = {
@@ -18,10 +18,15 @@ const pageStyles = {
 }
 
 const IndexPage = ({data}) => {
-  const userData = data.githubData.data.user;
-  console.log("data = ", data, userData);
+  const [userData, setUserData] = useState(data.githubData.data.user)
+  // console.log("gql data = ", data, "gql user data = ", userData);
 
-  // const avatar = getImage(data.avatarUrl);
+  const getFormattedDate = (isoDate) => {
+    const date = new Date(isoDate)
+    const options = { day: 'numeric', month: 'long', year: 'numeric' }
+    // console.log('date = ', date.toLocaleDateString(undefined, options))
+    return date.toLocaleDateString('en-GB', options)
+  }
 
   return (
     <main style={pageStyles}>
@@ -41,7 +46,7 @@ const IndexPage = ({data}) => {
     </header>
       
     <Container>
-      <SearchBar/>
+      <SearchBar setUserData={setUserData}/>
     </Container>
 
     <Container>
@@ -56,9 +61,11 @@ const IndexPage = ({data}) => {
               </Col>
               <Col>
                 <Card.Title>{userData.name}</Card.Title>
-                <a href="/">{userData.login}</a>
-                <Card.Subtitle className="mb-2 text-muted">{`Joined ${userData.createdAt}`}</Card.Subtitle>
-                <Card.Text>{userData.bioHTML}</Card.Text>
+                <a href="/">{`@${userData.login}`}</a>
+                <Card.Subtitle className="mb-2 text-muted">
+                  {'Joined ' + getFormattedDate(userData.createdAt)}
+                </Card.Subtitle>
+                <Card.Text>{userData.bio}</Card.Text>
               </Col>
             </Row>
           </Container>
@@ -81,10 +88,10 @@ const IndexPage = ({data}) => {
           </Container>
 
           <ul>
-            <li><Card.Link href="#">{userData.location}</Card.Link></li>
-            <li><Card.Link href="#">{userData.websiteUrl}</Card.Link></li>
-            <li><Card.Link href="#">Twitter</Card.Link></li>
-            <li><Card.Link href="#">{userData.company}</Card.Link></li>
+            <li><Card.Link href="#">{userData.location || 'Not Available'}</Card.Link></li>
+            <li><Card.Link href="#">{userData.websiteUrl || 'Not Available'}</Card.Link></li>
+            <li><Card.Link href="#">{userData.twitterUsername || 'Not Available'}</Card.Link></li>
+            <li><Card.Link href="#">{userData.company || 'Not Available'}</Card.Link></li>
           </ul>
       
         </Card.Body>

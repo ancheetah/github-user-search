@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react'
+import { React, useState } from 'react'
 import { 
     Button,
     Form,
@@ -6,18 +6,17 @@ import {
    } 
    from "react-bootstrap"
 
-const SearchBar = () => {
+const SearchBar = ({setUserData}) => {
 
     const [userInput, setUserInput] = useState('');
 
     const handleSubmit = (event) => {
-        alert(userInput + ' submitted!')
         event.preventDefault()
 
         // Fetch new user data
         async function getData() {
             await fetch(
-                "https://api.github.com/users/octocat", 
+                `https://api.github.com/users/${userInput}`, 
                 {
                   headers: {
                     authorization: `token ${process.env.GITHUB_TOKEN}`
@@ -25,15 +24,27 @@ const SearchBar = () => {
                 }
               )
               .then( response => response.json() )
-              .then( data => console.log("data = ", data))
+              .then( data => {
+                console.log("fetch data = ", data)
+                setUserData({
+                    avatarUrl: data.avatar_url,
+                    bio: data.bio,
+                    company: data.company,
+                    createdAt: data.created_at,
+                    followers: {totalCount: data.followers},
+                    following: {totalCount: data.following},
+                    location: data.location,
+                    login: data.login,
+                    name: data.name,
+                    repositories: {totalCount: (data.public_repos || 0) + (data.owned_private_repos || 0)},
+                    websiteUrl: data.blog,
+                    twitterUsername: data.twitter_username
+                })
+              })
         }
         
         getData()
     }
-
-    useEffect(() => {
-        console.log('user input: ', userInput)
-    }, [userInput]) 
 
     return (
         <Form onSubmit={handleSubmit}>
