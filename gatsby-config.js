@@ -22,7 +22,7 @@ module.exports = {
 
       // token: required by the GitHub API
       // scopes: https://docs.github.com/en/graphql/guides/forming-calls-with-graphql
-      token: process.env.GITHUB_TOKEN,
+      token: process.env.GH_TOKEN,
 
       // GraphQLquery: defaults to a search query
       graphQLQuery: `

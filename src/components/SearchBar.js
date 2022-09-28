@@ -20,7 +20,7 @@ const SearchBar = ({setUserData}) => {
                 `https://api.github.com/users/${userInput}`, 
                 {
                   headers: {
-                    authorization: `token ${process.env.GITHUB_TOKEN}`
+                    authorization: `token ${process.env.GH_TOKEN}`
                   }
                 }
               )
