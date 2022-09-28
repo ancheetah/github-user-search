@@ -5,6 +5,7 @@ import {
     InputGroup,
    } 
    from "react-bootstrap"
+import { css } from '@emotion/css';
 
 const SearchBar = ({setUserData}) => {
 
@@ -25,7 +26,7 @@ const SearchBar = ({setUserData}) => {
               )
               .then( response => response.json() )
               .then( data => {
-                console.log("fetch data = ", data)
+                // console.log("api fetched data = ", data)
                 setUserData({
                     avatarUrl: data.avatar_url,
                     bio: data.bio,
@@ -57,6 +58,7 @@ const SearchBar = ({setUserData}) => {
                     value={userInput} 
                     onChange={(e) => setUserInput(e.target.value)}
                     placeholder="Search Github username..." 
+                    className={css(inputText)}
                 />
                 <Button type="submit">Search</Button>
                 </InputGroup>
@@ -66,3 +68,8 @@ const SearchBar = ({setUserData}) => {
 }
 
 export default SearchBar
+
+const inputText = {
+    fontSize: 13,
+    color: '#4B6A9B',
+}
