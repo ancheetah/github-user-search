@@ -1,54 +1,44 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby minimal starter
-</h1>
+# Frontend Mentor - GitHub user search app solution
 
-## 🚀 Quick start
+This is a solution to the [GitHub user search app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/github-user-search-app-Q09YOgaH6). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+## Overview
+Use a search bar to search the Github database for user information such as repositories, bio, avatar, etc.
 
-1.  **Create a Gatsby site.**
+### The challenge
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+Users should be able to:
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
+- View the optimal layout for the app depending on their device's screen size [TODO]
+- See hover states for all interactive elements on the page [TODO]
+- Search for GitHub users by their username
+- See relevant user information based on their search
+- Switch between light and dark themes [TODO]
+- **Bonus**: Have the correct color scheme chosen for them based on their computer preferences. _Hint_: Research `prefers-color-scheme` in CSS.
 
-2.  **Start developing.**
+### Video Demo
 
-    Navigate into your new site’s directory and start it up.
+https://www.loom.com/share/a916c6386bb742118c232ea2692e8278
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+### Built with
 
-3.  **Open the code and start customizing!**
+- Gatsby
+- React Bootstrap
+- Emotion CSS
+- Github REST API & GraphQL API
 
-    Your site is now running at http://localhost:8000!
+## Features
+This app uses a Gatsby plugin for Github to get Octocat data with GraphQL at build time. For client-side requests in the search bar, a fetch to the Github REST API "users" endpoint is used.
 
-    Edit `src/pages/index.js` to see your site update in real-time!
+React Bootstrap and Emotion CSS are used to quickly style responsive components.
 
-4.  **Learn more**
+### What I learned
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+Gatsby was not the best framework for this project since the Github community user database is very large and too much to pre-render at build time. This also makes it difficult to work with dynamic Gatsby images. A dynamic Next.js app would have been a better choice.
 
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+While this app works locally, more setup is required to deploy. Since this app relies on client side requests to Github API and Netlify environment variables are only available at build time, Netlify functions are needed to hide the personal access token at runtime.
 
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+https://github.com/netlify/code-examples/tree/master/function_examples/token-hider
 
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+### Useful resources
 
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-## 🚀 Quick start (Gatsby Cloud)
-
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
-
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal)
+- [Authenticating Github GraphQL API](https://docs.github.com/en/graphql/guides/forming-calls-with-graphql#authenticating-with-graphql
