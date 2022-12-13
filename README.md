@@ -15,9 +15,9 @@ Users should be able to:
 - Switch between light and dark themes [TODO]
 - **Bonus**: Have the correct color scheme chosen for them based on their computer preferences. _Hint_: Research `prefers-color-scheme` in CSS.
 
-### Video Demo
+### Demo
 
-https://www.loom.com/share/a916c6386bb742118c232ea2692e8278
+https://github-user-search-lemon.vercel.app/
 
 ### Built with
 
@@ -35,10 +35,6 @@ React Bootstrap and Emotion CSS are used to quickly style responsive components.
 
 Gatsby was not the best framework for this project since the Github community user database is very large and too much to pre-render at build time. This also makes it difficult to work with dynamic Gatsby images. A dynamic Next.js app would have been a better choice.
 
-While this app works locally, more setup is required to deploy. Since this app relies on client side requests to Github API and Netlify environment variables are only available at build time, Netlify functions are needed to hide the personal access token at runtime.
-
-https://github.com/netlify/code-examples/tree/master/function_examples/token-hider
-
 ### Useful resources
 
-- [Authenticating Github GraphQL API](https://docs.github.com/en/graphql/guides/forming-calls-with-graphql#authenticating-with-graphql
+- [Authenticating Github GraphQL API](https://docs.github.com/en/graphql/guides/forming-calls-with-graphql#authenticating-with-graphql)
