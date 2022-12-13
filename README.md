@@ -8,11 +8,11 @@ Use a search bar to search the Github database for user information such as repo
 
 Users should be able to:
 
-- View the optimal layout for the app depending on their device's screen size [TODO]
+- View the optimal layout for the app depending on their device's screen size
 - See hover states for all interactive elements on the page [TODO]
 - Search for GitHub users by their username
 - See relevant user information based on their search
-- Switch between light and dark themes [TODO]
+- Switch between light and dark themes
 - **Bonus**: Have the correct color scheme chosen for them based on their computer preferences. _Hint_: Research `prefers-color-scheme` in CSS.
 
 ### Demo
