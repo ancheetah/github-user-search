@@ -5,6 +5,12 @@ import { css } from '@emotion/css';
 import { Container, Row, Col, Card, Navbar } from 'react-bootstrap';
 import { graphql } from 'gatsby';
 import SearchBar from '../components/SearchBar';
+import sun from '../images/icon-sun.svg'; 
+import moon from '../images/icon-moon.svg';
+import location from '../images/icon-location.svg';
+import company from '../images/icon-company.svg';
+import website from '../images/icon-website.svg';
+import twitter from '../images/icon-twitter.svg';
 
 const IndexPage = ({ data }) => {
     const [userData, setUserData] = useState(data.githubData.data.user);
@@ -107,7 +113,11 @@ const IndexPage = ({ data }) => {
                                 className={css(header.mode)}
                                 onClick={() => setIsDark(!isDark)}
                             >
-                                DARK
+                                {
+                                    isDark 
+                                    ? <span>LIGHT <img src={sun} alt='Light Mode'/></span>
+                                    : <span>DARK <img src={moon} alt='Dark Mode'/></span>
+                                }
                             </Navbar.Text>
                         </Navbar.Collapse>
                     </Container>
@@ -190,14 +200,24 @@ const IndexPage = ({ data }) => {
                             </Row>
                         </Container>
 
-                        <ul>
-                            <li>{userData.location || 'Not Available'}</li>
-                            <li>{userData.websiteUrl || 'Not Available'}</li>
-                            <li>
-                                {userData.twitterUsername || 'Not Available'}
-                            </li>
-                            <li>{userData.company || 'Not Available'}</li>
-                        </ul>
+                        <Container>
+                            <Row className='mb-2'>
+                                <Col xs={1}><img src={location} alt="Location"/></Col>
+                                <Col>{userData.location || 'Not Available'}</Col>
+                            </Row>
+                            <Row className='mb-2'>
+                                <Col xs={1}><img src={website} alt="Website"/></Col>
+                                <Col>{userData.websiteUrl || 'Not Available'}</Col>
+                            </Row>
+                            <Row className='mb-2'>
+                                <Col xs={1}><img src={twitter} alt="Twitter"/></Col>
+                                <Col>{userData.twitterUsername || 'Not Available'}</Col>
+                            </Row>
+                            <Row className='mb-2'>
+                                <Col xs={1}><img src={company} alt="Company"/></Col>
+                                <Col>{userData.company || 'Not Available'}</Col>
+                            </Row>
+                        </Container>
                     </Card.Body>
                 </Card>
             </Container>

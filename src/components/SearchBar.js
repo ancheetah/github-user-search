@@ -1,6 +1,7 @@
 import { React, useState } from 'react';
 import { Button, Form, InputGroup } from 'react-bootstrap';
 import { css } from '@emotion/css';
+import search from '../images/icon-search.svg';
 
 const SearchBar = ({ setUserData, isDark }) => {
     const [userInput, setUserInput] = useState('');
@@ -55,7 +56,9 @@ const SearchBar = ({ setUserData, isDark }) => {
         <Form onSubmit={handleSubmit} className='mb-4'>
             <Form.Group className={css(searchBar)} controlId='formBasicEmail'>
                 <InputGroup>
-                    <InputGroup.Text>O</InputGroup.Text>
+                    <InputGroup.Text className={css(inputText)}>
+                        <img src={search} alt='Search'/>
+                    </InputGroup.Text>
                     <Form.Control
                         type='text'
                         name='username'
