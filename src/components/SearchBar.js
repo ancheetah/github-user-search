@@ -16,14 +16,7 @@ const SearchBar = ({setUserData}) => {
 
         // Fetch new user data
         async function getData() {
-            await fetch(
-                `https://api.github.com/users/${userInput}`, 
-                {
-                  headers: {
-                    authorization: `token ${process.env.GH_TOKEN}`
-                  }
-                }
-              )
+            await fetch(`https://api.github.com/users/${userInput}`)
               .then( response => response.json() )
               .then( data => {
                 // console.log("api fetched data = ", data)
